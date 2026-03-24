@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import BrandLogo from "./BrandLogo";
+import iconWechatOfficial from "../assets/微信公众号.svg";
+import iconWecom from "../assets/企业微信.svg";
+import iconZhihu from "../assets/知乎.svg";
 import { virtualContact } from "../content/siteContent";
 import { siteSearchIndex, suggestedSearches } from "../content/searchIndex";
 
@@ -77,13 +80,14 @@ export default function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [consultOpen, setConsultOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
   const searchDrawerRef = useRef(null);
+  const consultDrawerRef = useRef(null);
   const searchInputRef = useRef(null);
   const searchResults = getSearchResults(searchQuery);
-  const hasQuery = Boolean(normalizeSearchValue(searchQuery));
 
   useEffect(() => {
     const handleScroll = () => {
@@ -99,20 +103,13 @@ export default function SiteHeader() {
   useEffect(() => {
     setOpen(false);
     setSearchOpen(false);
+    setConsultOpen(false);
   }, [location.pathname, location.hash]);
 
   useEffect(() => {
-    if (!searchOpen) {
-      document.body.style.overflow = "";
-      return;
+    if (searchOpen) {
+      searchInputRef.current?.focus();
     }
-
-    document.body.style.overflow = "hidden";
-    searchInputRef.current?.focus();
-
-    return () => {
-      document.body.style.overflow = "";
-    };
   }, [searchOpen]);
 
   useEffect(() => {
@@ -134,9 +131,28 @@ export default function SiteHeader() {
   }, [searchOpen]);
 
   useEffect(() => {
+    if (!consultOpen) {
+      return;
+    }
+
+    const handlePointerDown = (event) => {
+      if (!consultDrawerRef.current?.contains(event.target)) {
+        setConsultOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+    };
+  }, [consultOpen]);
+
+  useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
         setSearchOpen(false);
+        setConsultOpen(false);
       }
     };
 
@@ -146,6 +162,7 @@ export default function SiteHeader() {
   }, []);
 
   const openSearch = () => {
+    setConsultOpen(false);
     setSearchOpen(true);
   };
 
@@ -156,11 +173,6 @@ export default function SiteHeader() {
       navigate(searchResults[0].path);
       setSearchQuery("");
     }
-  };
-
-  const handleResultSelect = (path) => {
-    navigate(path);
-    setSearchQuery("");
   };
 
   return (
@@ -219,9 +231,18 @@ export default function SiteHeader() {
           >
             <SearchIcon />
           </button>
-          <Link to="/contact" className="nav-cta">
+          <button
+            type="button"
+            className="nav-cta"
+            aria-expanded={consultOpen}
+            aria-controls="site-consult-drawer"
+            onClick={() => {
+              setSearchOpen(false);
+              setConsultOpen((value) => !value);
+            }}
+          >
             商务咨询
-          </Link>
+          </button>
           <button
             className="menu-toggle"
             type="button"
@@ -239,6 +260,12 @@ export default function SiteHeader() {
         type="button"
         aria-label="关闭搜索"
         onClick={() => setSearchOpen(false)}
+      />
+      <button
+        className={`consult-overlay${consultOpen ? " is-open" : ""}`}
+        type="button"
+        aria-label="关闭商务咨询联系方式"
+        onClick={() => setConsultOpen(false)}
       />
       <aside
         ref={searchDrawerRef}
@@ -285,33 +312,70 @@ export default function SiteHeader() {
               <SearchIcon />
             </button>
           </form>
-          <div className="site-search-body">
-            <p className="site-search-status">
-              {hasQuery
-                ? searchResults.length
-                  ? `找到 ${searchResults.length} 条相关内容，可点击结果跳转。`
-                  : "未找到相关内容，请尝试其他关键词。"
-                : "可搜索产品方向、服务流程、应用支持、Logo、联系方式等关键词。"}
-            </p>
-            <div className="site-search-results">
-              {searchResults.length ? (
-                searchResults.map((result) => (
-                  <button
-                    key={result.id}
-                    className="site-search-result"
-                    type="button"
-                    onClick={() => handleResultSelect(result.path)}
-                  >
-                    <span className="site-search-result-page">{result.page}</span>
-                    <strong>{result.title}</strong>
-                    <p>{result.excerpt}</p>
-                  </button>
-                ))
-              ) : (
-                <div className="site-search-empty">
-                  没有匹配到相关内容，建议尝试“产品中心”“服务热线”“应用支持”等关键词。
+        </div>
+      </aside>
+      <aside
+        ref={consultDrawerRef}
+        className={`site-consult-drawer${consultOpen ? " is-open" : ""}`}
+        id="site-consult-drawer"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="consult-title"
+      >
+        <div className="consult-panel">
+          <div className="consult-head">
+            <div className="consult-title-wrap">
+              <span>Business Contact</span>
+              <h2 id="consult-title">商务咨询联系方式</h2>
+            </div>
+            <button
+              className="consult-close"
+              type="button"
+              aria-label="关闭商务咨询弹窗"
+              onClick={() => setConsultOpen(false)}
+            >
+              <CloseIcon />
+            </button>
+          </div>
+          <div className="consult-body">
+            <div className="consult-list">
+              <div className="consult-item">
+                <span>服务热线</span>
+                <strong>{virtualContact.hotline}</strong>
+              </div>
+              <div className="consult-item">
+                <span>商务手机</span>
+                <strong>{virtualContact.mobile}</strong>
+              </div>
+              <div className="consult-item">
+                <span>联系邮箱</span>
+                <strong>{virtualContact.email}</strong>
+              </div>
+              <div className="consult-item">
+                <span>服务时间</span>
+                <strong>{virtualContact.serviceTime}</strong>
+              </div>
+              <div className="consult-item consult-item-wide">
+                <span>联系地址</span>
+                <strong>{virtualContact.address}</strong>
+              </div>
+            </div>
+            <div className="consult-side">
+              <p className="consult-side-title">平台联系入口</p>
+              <div className="consult-socials">
+                <div className="consult-social">
+                  <img src={iconWechatOfficial} alt="" aria-hidden="true" />
+                  <span>微信公众号</span>
                 </div>
-              )}
+                <div className="consult-social">
+                  <img src={iconWecom} alt="" aria-hidden="true" />
+                  <span>企业微信</span>
+                </div>
+                <div className="consult-social">
+                  <img src={iconZhihu} alt="" aria-hidden="true" />
+                  <span>知乎</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
