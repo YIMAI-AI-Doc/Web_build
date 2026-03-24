@@ -19,8 +19,13 @@ import gatheringImage from "../assets/photos/gathering.jpg";
 import surfactantImage from "../assets/photos/surfactant.jpg";
 
 const productImages = [drillingImage, fracturingImage, waterImage, gatheringImage, surfactantImage];
+const productGalleryItems = productGroups.map((item, index) => ({ ...item, image: productImages[index] }));
 
 export default function Home() {
+  const [primaryProduct, ...secondaryProducts] = productGalleryItems;
+  const rightRailProducts = [secondaryProducts[0], secondaryProducts[3]];
+  const bottomProducts = [secondaryProducts[1], secondaryProducts[2]];
+
   return (
     <main>
       <PageMeta
@@ -84,22 +89,54 @@ export default function Home() {
             />
           </Reveal>
           <div className="product-gallery">
-            {productGroups.map((item, index) => (
-              <Reveal
-                key={item.title}
-                delay={index * 60}
-                className={`gallery-item gallery-item-${index + 1}`}
-              >
+            <div className="product-gallery-left">
+              <Reveal className="gallery-item gallery-item-1 product-gallery-main">
                 <article className="gallery-card">
-                  <img src={productImages[index]} alt={item.title} />
+                  <img src={primaryProduct.image} alt={primaryProduct.title} />
                   <div className="gallery-overlay">
-                    <span>{item.index}</span>
-                    <h3>{item.title}</h3>
-                    {index === 0 ? <p>{item.shortText}</p> : null}
+                    <span>{primaryProduct.index}</span>
+                    <h3>{primaryProduct.title}</h3>
+                    <p>{primaryProduct.shortText}</p>
                   </div>
                 </article>
               </Reveal>
-            ))}
+
+              <div className="product-gallery-bottom">
+                {bottomProducts.map((item, index) => (
+                  <Reveal
+                    key={item.title}
+                    delay={(index + 3) * 60}
+                    className={`gallery-item gallery-item-${Number(item.index)}`}
+                  >
+                    <article className="gallery-card">
+                      <img src={item.image} alt={item.title} />
+                      <div className="gallery-overlay">
+                        <span>{item.index}</span>
+                        <h3>{item.title}</h3>
+                      </div>
+                    </article>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+
+            <div className="product-gallery-rail">
+              {rightRailProducts.map((item, index) => (
+                <Reveal
+                  key={item.title}
+                  delay={(index + 1) * 60}
+                  className={`gallery-item gallery-item-${Number(item.index)}`}
+                >
+                  <article className="gallery-card">
+                    <img src={item.image} alt={item.title} />
+                    <div className="gallery-overlay">
+                      <span>{item.index}</span>
+                      <h3>{item.title}</h3>
+                    </div>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>

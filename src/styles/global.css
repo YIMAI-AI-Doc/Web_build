@@ -79,34 +79,33 @@ textarea {
 
 .page-frame {
   min-height: 100vh;
-  padding-top: calc(var(--header-height) + var(--header-utility-height) + 5px);
+  padding-top: 0;
 }
 
 .search-target {
-  scroll-margin-top: calc(var(--header-height) + var(--header-utility-height) + 36px);
+  scroll-margin-top: 36px;
 }
 
 .site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  position: relative;
   width: 100%;
   z-index: 40;
+  background:
+    linear-gradient(180deg, rgba(246, 243, 236, 0.92), rgba(244, 240, 232, 0.84));
+  backdrop-filter: blur(14px);
   transition: background 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
 }
 
 .site-header.is-scrolled {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.94);
   border-bottom: 1px solid rgba(34, 49, 58, 0.06);
-  backdrop-filter: blur(14px);
   box-shadow: 0 10px 30px rgba(77, 73, 62, 0.07);
 }
 
 .header-utility {
   color: rgba(34, 49, 58, 0.76);
-  background: rgba(246, 243, 236, 0.86);
-  border-bottom: 1px solid rgba(34, 49, 58, 0.05);
+  background: transparent;
+  border-bottom: 0;
 }
 
 .site-header.is-scrolled .header-utility {
@@ -973,7 +972,7 @@ textarea {
   left: 30px;
   right: auto;
   bottom: 30px;
-  width: min(159px, calc(100% - 65px));
+  width: min(162px, calc(100% - 65px));
   padding: 8px 10px 7px;
   border-radius: 12px;
   background: linear-gradient(180deg, rgba(247, 243, 236, 0.92), rgba(241, 234, 225, 0.86));
@@ -1042,6 +1041,12 @@ textarea {
   font-size: clamp(2.4rem, 4vw, 4.5rem);
 }
 
+.contact-hero-title {
+  max-width: 20em;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
 .sub-hero p {
   max-width: 760px;
   margin: 20px 0 0;
@@ -1074,20 +1079,57 @@ textarea {
 }
 
 .product-gallery {
+  --gallery-gap: 18px;
+  --gallery-main-width: 870.41px;
+  --gallery-main-height: 593.21px;
+  --gallery-rail-height: 440.75px;
+  --gallery-bottom-height: 288.29px;
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(0, 1.08fr) clamp(180px, 20vw, 220px);
-  grid-template-areas:
-    "item1 item1 item2"
-    "item1 item1 item2"
-    "item1 item1 ."
-    "item3 item4 item5"
-    "item3 item4 item5";
-  grid-template-rows: 166px 128px 312px 147px 147px;
-  gap: 18px;
+  grid-template-columns: minmax(0, var(--gallery-main-width)) minmax(0, calc(100% - var(--gallery-main-width) - var(--gallery-gap)));
+  width: 100%;
+  gap: var(--gallery-gap);
+  align-items: stretch;
 }
 
 .gallery-item {
   min-width: 0;
+}
+
+.product-gallery-left,
+.product-gallery-main,
+.product-gallery-rail,
+.product-gallery-bottom {
+  min-width: 0;
+}
+
+.product-gallery-left {
+  display: grid;
+  width: var(--gallery-main-width);
+  gap: var(--gallery-gap);
+}
+
+.product-gallery-main .gallery-card {
+  height: var(--gallery-main-height);
+}
+
+.product-gallery-rail {
+  display: grid;
+  width: 100%;
+  gap: var(--gallery-gap);
+}
+
+.product-gallery-rail .gallery-card {
+  height: var(--gallery-rail-height);
+}
+
+.product-gallery-bottom .gallery-card {
+  height: var(--gallery-bottom-height);
+}
+
+.product-gallery-bottom {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gallery-gap);
 }
 
 .gallery-card {
@@ -1098,12 +1140,6 @@ textarea {
   box-shadow: var(--shadow);
   border: 1px solid rgba(34, 49, 58, 0.08);
 }
-
-.gallery-item-1 { grid-area: item1; }
-.gallery-item-2 { grid-area: item2; }
-.gallery-item-3 { grid-area: item3; }
-.gallery-item-4 { grid-area: item4; }
-.gallery-item-5 { grid-area: item5; }
 
 .gallery-card img,
 .product-media img,
@@ -1611,14 +1647,15 @@ textarea {
 
 .site-footer {
   margin-top: 56px;
-}
-
-.footer-main {
-  color: #f6f3ec;
   background:
     radial-gradient(circle at 16% 18%, rgba(95, 124, 134, 0.14), transparent 20%),
     radial-gradient(circle at right bottom, rgba(255, 255, 255, 0.05), transparent 24%),
     linear-gradient(112deg, #22364e 0%, #274c5e 40%, #1d3557 100%);
+}
+
+.footer-main {
+  color: #f6f3ec;
+  background: transparent;
 }
 
 .footer-main-inner {
@@ -1784,7 +1821,7 @@ textarea {
 
 .footer-meta {
   border-top: 1px solid rgba(255, 255, 255, 0.22);
-  background: rgba(17, 28, 45, 0.38);
+  background: transparent;
 }
 
 .footer-meta-inner {
@@ -1834,22 +1871,26 @@ textarea {
   }
 
   .product-gallery {
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: 18px;
+  }
+
+  .product-gallery-left {
+    width: 100%;
+    gap: 18px;
+  }
+
+  .product-gallery-rail,
+  .product-gallery-bottom {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-areas:
-      "item1 item1"
-      "item2 item5"
-      "item3 item4";
-    grid-template-rows: 220px 180px 130px;
+    width: 100%;
+    gap: 18px;
   }
 
-  .gallery-item-2,
-  .gallery-item-5 {
-    display: block;
-  }
-
-  .gallery-item-2 .gallery-card,
-  .gallery-item-5 .gallery-card {
-    height: 100%;
+  .product-gallery-rail .gallery-card,
+  .product-gallery-bottom .gallery-card {
+    height: 220px;
   }
 
   .capability-grid {
@@ -1971,7 +2012,7 @@ textarea {
 
 @media (max-width: 640px) {
   .search-target {
-    scroll-margin-top: calc(var(--header-height) + 22px);
+    scroll-margin-top: 22px;
   }
 
   .hero h1 {
@@ -1982,6 +2023,11 @@ textarea {
   .section-heading h2,
   .cta-strip h2 {
     font-size: 2.1rem;
+  }
+
+  .contact-hero-title {
+    max-width: 13.6em;
+    font-size: 1.9rem;
   }
 
   .hero-signals,
@@ -1996,25 +2042,22 @@ textarea {
     grid-template-columns: 1fr;
   }
 
-  .product-gallery {
+  .product-gallery-main .gallery-card,
+  .product-gallery-rail .gallery-card,
+  .product-gallery-bottom .gallery-card {
+    height: 220px;
+  }
+
+  .product-gallery-left {
+    width: 100%;
+    gap: 18px;
+  }
+
+  .product-gallery-rail,
+  .product-gallery-bottom {
     grid-template-columns: 1fr;
-    grid-template-areas:
-      "item1"
-      "item2"
-      "item3"
-      "item4"
-      "item5";
-    grid-template-rows: repeat(5, 220px);
-  }
-
-  .gallery-item-2,
-  .gallery-item-5 {
-    display: block;
-  }
-
-  .gallery-item-2 .gallery-card,
-  .gallery-item-5 .gallery-card {
-    height: 100%;
+    width: 100%;
+    gap: 18px;
   }
 
   .capability-grid {

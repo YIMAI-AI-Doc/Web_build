@@ -41,7 +41,7 @@ export default function Contact() {
         <div className="shell">
           <Reveal>
             <p className="eyebrow">Contact</p>
-            <h1>欢迎围绕产品、应用与合作方式与我们联系</h1>
+            <h1 className="contact-hero-title">欢迎围绕产品、应用与合作方式与我们联系</h1>
             <p>{virtualContact.note}</p>
           </Reveal>
         </div>
