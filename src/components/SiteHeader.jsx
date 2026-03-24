@@ -6,8 +6,8 @@ import { siteSearchIndex, suggestedSearches } from "../content/searchIndex";
 
 const navItems = [
   { to: "/", label: "首页" },
-  { to: "/about", label: "关于我们" },
   { to: "/products", label: "产品中心" },
+  { to: "/about", label: "关于我们" },
   { to: "/contact", label: "联系我们" },
 ];
 
@@ -80,6 +80,7 @@ export default function SiteHeader() {
   const [searchQuery, setSearchQuery] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
+  const searchDrawerRef = useRef(null);
   const searchInputRef = useRef(null);
   const searchResults = getSearchResults(searchQuery);
   const hasQuery = Boolean(normalizeSearchValue(searchQuery));
@@ -111,6 +112,24 @@ export default function SiteHeader() {
 
     return () => {
       document.body.style.overflow = "";
+    };
+  }, [searchOpen]);
+
+  useEffect(() => {
+    if (!searchOpen) {
+      return;
+    }
+
+    const handlePointerDown = (event) => {
+      if (!searchDrawerRef.current?.contains(event.target)) {
+        setSearchOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
     };
   }, [searchOpen]);
 
@@ -222,6 +241,7 @@ export default function SiteHeader() {
         onClick={() => setSearchOpen(false)}
       />
       <aside
+        ref={searchDrawerRef}
         className={`site-search-drawer${searchOpen ? " is-open" : ""}`}
         id="site-search-drawer"
         role="dialog"

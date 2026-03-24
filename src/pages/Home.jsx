@@ -84,7 +84,13 @@ export default function Home() {
           <Reveal>
             <SectionHeading
               eyebrow="Product Matrix"
-              title="围绕油气开发流程组织五大产品体系"
+              title={
+                <>
+                  围绕油气开发流程
+                  <br />
+                  组织五大产品体系
+                </>
+              }
               description="用图像、标题和少量关键信息建立第一层认知，后续再进入更详细的产品分类与应用说明。"
             />
           </Reveal>
@@ -215,28 +221,53 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section">
-        <div className="shell split-layout">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Service Flow"
-              title="从需求沟通到持续支持的服务流程"
-              description="在产品性能之外，站点同步展示服务方法，让官网更像一家具备工程协同能力的材料企业。"
-            />
-          </Reveal>
-          <div className="flow-list">
-            {serviceFlow.map((item, index) => (
-              <Reveal key={item.title} delay={index * 70}>
-                <article className="flow-row">
+      <section className="section service-flow-section">
+        <div className="shell service-flow-shell">
+          <Reveal className="service-flow-copy">
+            <p className="eyebrow">Service Flow</p>
+            <h2 className="service-flow-title">
+              从需求沟通到持续
+              <br />
+              支持的服务流程
+            </h2>
+            <p className="service-flow-description">
+              在产品性能之外，站点同步展示服务方法，让官网更像一家具备工程协同能力的材料企业。
+            </p>
+            <div className="service-flow-detail-list">
+              {serviceFlow.map((item) => (
+                <article key={item.step} className="service-flow-detail">
                   <span>{item.step}</span>
                   <div>
                     <h3>{item.title}</h3>
                     <p>{item.text}</p>
                   </div>
                 </article>
-              </Reveal>
-            ))}
-          </div>
+              ))}
+            </div>
+          </Reveal>
+
+          <Reveal className="service-flow-orbit-panel" delay={100}>
+            <div className="service-flow-orbit">
+              <div className="service-flow-ring">
+                <div className="service-flow-core">
+                  <strong>协同闭环</strong>
+                  <span>实验室到现场</span>
+                </div>
+                {serviceFlow.map((item, index) => (
+                  <article
+                    key={item.title}
+                    className={`service-flow-node service-flow-node-${index + 1}`}
+                  >
+                    <strong>{item.step}</strong>
+                    <span>{item.title}</span>
+                  </article>
+                ))}
+              </div>
+              <div className="service-flow-callout">
+                围绕工况边界、测试验证、方案确认和持续反馈，形成更完整的工程协同路径。
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 

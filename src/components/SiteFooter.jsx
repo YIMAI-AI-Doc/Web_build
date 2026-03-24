@@ -14,7 +14,7 @@ export default function SiteFooter() {
             <p>{brand.tagline}，服务钻完井、增产改造、采油水处理与集输等关键工艺环节。</p>
             <FooterSocials />
           </div>
-          <div className="footer-stack">
+          <div className="footer-stack footer-stack-products">
             <div className="footer-panel">
               <p className="footer-kicker">产品方向</p>
               <p>钻完井化学品 / 酸化压裂化学品 / 采油水处理化学品 / 集输化学品 / 表面活性剂</p>
@@ -27,7 +27,7 @@ export default function SiteFooter() {
               <p>示例地址：{virtualContact.address}</p>
             </div>
           </div>
-          <div className="footer-stack">
+          <div className="footer-stack footer-stack-services">
             <div className="footer-panel">
               <p className="footer-kicker">应用与服务</p>
               <p>钻完井 / 酸化压裂 / 采油水处理</p>

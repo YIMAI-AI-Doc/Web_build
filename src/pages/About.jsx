@@ -9,9 +9,6 @@ import {
   companyIntro,
   productSubcategories,
 } from "../content/siteContent";
-import logoPrimary from "../assets/logo-yimai-fluid.svg";
-import logoMono from "../assets/logo-yimai-mono.svg";
-import logoIcon from "../assets/logo-yimai-icon.svg";
 
 export default function About() {
   return (
@@ -24,7 +21,11 @@ export default function About() {
         <div className="shell">
           <Reveal>
             <p className="eyebrow">About YIMAI</p>
-            <h1>以新材料与化学品能力服务油气开发现场</h1>
+            <h1 className="about-hero-title">
+              以新材料与化学品能力
+              <br />
+              服务油气开发现场
+            </h1>
             <p>{companyIntro.heroLead}</p>
           </Reveal>
         </div>
@@ -70,41 +71,6 @@ export default function About() {
                 </article>
               </Reveal>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-tone search-target" id="brand-kit">
-        <div className="shell">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Brand Kit"
-              title="本轮品牌资产已补齐三种使用形态"
-              description="主 logo 用于官网与宣传页，单色版适用于深底和印刷，小图标版可用于 favicon、头像和小尺寸入口。"
-            />
-          </Reveal>
-          <div className="brand-kit-grid">
-            <Reveal>
-              <article className="brand-asset">
-                <img src={logoPrimary} alt="主 logo" />
-                <h3>主 Logo</h3>
-                <p>抽象流体主版，适合官网浅底与品牌展示场景。</p>
-              </article>
-            </Reveal>
-            <Reveal delay={60}>
-              <article className="brand-asset">
-                <img src={logoMono} alt="单色 logo" />
-                <h3>单色版</h3>
-                <p>适合深底、印刷简化和需要更高识别稳定性的场景。</p>
-              </article>
-            </Reveal>
-            <Reveal delay={120}>
-              <article className="brand-asset">
-                <img src={logoIcon} alt="图标版 logo" />
-                <h3>小图标版</h3>
-                <p>适合网站小图标、社媒头像和移动端品牌入口。</p>
-              </article>
-            </Reveal>
           </div>
         </div>
       </section>

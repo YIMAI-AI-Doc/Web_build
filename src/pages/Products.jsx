@@ -22,7 +22,11 @@ export default function Products() {
         <div className="shell">
           <Reveal>
             <p className="eyebrow">Products</p>
-            <h1>五大产品体系覆盖核心油田化学品应用环节</h1>
+            <h1 className="products-hero-title">
+              五大产品体系覆盖
+              <br />
+              核心油田化学品应用环节
+            </h1>
             <p>从钻完井、增产改造到水处理与集输管理，以更专业的工艺语言组织产品方向和应用说明。</p>
           </Reveal>
         </div>

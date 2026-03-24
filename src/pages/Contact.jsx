@@ -41,7 +41,10 @@ export default function Contact() {
         <div className="shell">
           <Reveal>
             <p className="eyebrow">Contact</p>
-            <h1 className="contact-hero-title">欢迎围绕产品、应用与合作方式与我们联系</h1>
+            <h1 className="contact-hero-title">
+              <span className="contact-hero-line">欢迎围绕产品、应用与</span>
+              <span className="contact-hero-line">合作方式与我们联系</span>
+            </h1>
             <p>{virtualContact.note}</p>
           </Reveal>
         </div>
@@ -85,7 +88,7 @@ export default function Contact() {
               <h2>提交咨询</h2>
               <label>
                 <span>联系人</span>
-                <input name="name" value={form.name} onChange={updateField} placeholder="请输入您的姓名" />
+                <input name="name" value={form.name} onChange={updateField} placeholder="请输入您的姓名或称呼" />
               </label>
               <label>
                 <span>联系电话</span>
@@ -100,6 +103,7 @@ export default function Contact() {
                   <option value="water">采油水处理化学品</option>
                   <option value="transport">集输化学品</option>
                   <option value="surfactant">表面活性剂</option>
+                  <option value="other">其它</option>
                 </select>
               </label>
               <label>

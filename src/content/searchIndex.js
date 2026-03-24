@@ -56,14 +56,6 @@ export const siteSearchIndex = [
     excerpt: capabilityPillars.map((item) => `${item.title} ${item.text}`).join(" "),
     keywords: ["能力结构", "研发", "实验评价", "质量控制", "技术沟通", "供应保障"],
   },
-  {
-    id: "brand-kit",
-    title: "品牌资产与 Logo 使用形态",
-    page: "关于我们",
-    path: "/about#brand-kit",
-    excerpt: "主 Logo、单色版与小图标版适用于官网展示、深底印刷和小尺寸入口。",
-    keywords: ["logo", "品牌资产", "主 logo", "单色版", "图标版"],
-  },
   ...productGroups.map((item) => ({
     id: `product-${item.index}`,
     title: item.title,
