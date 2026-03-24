@@ -1,0 +1,20 @@
+<svg width="1600" height="1100" viewBox="0 0 1600 1100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1100" rx="56" fill="#E9E6DE"/>
+  <rect x="88" y="84" width="1424" height="932" rx="44" fill="url(#paint0_linear_130_5)"/>
+  <path d="M278 746H1322" stroke="#F4F1EA" stroke-width="20" stroke-linecap="round"/>
+  <path d="M320 568H1264" stroke="#E8ECE8" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="490" cy="746" r="62" fill="#F4F1EA"/>
+  <circle cx="892" cy="746" r="62" fill="#F4F1EA"/>
+  <circle cx="1148" cy="568" r="50" fill="#D7E2DF"/>
+  <path d="M722 326C760 326 794 358 794 398V746H650V398C650 358 684 326 722 326Z" fill="#F4F1EA"/>
+  <path d="M990 402C1024 402 1052 430 1052 464V746H930V464C930 430 958 402 990 402Z" fill="#D9E6E3"/>
+  <circle cx="1212" cy="246" r="132" fill="#F4F1EA" fill-opacity="0.14"/>
+  <text x="124" y="880" fill="#F4F1EA" font-size="104" font-family="Manrope, sans-serif" font-weight="800">GATHERING</text>
+  <text x="126" y="958" fill="#DBE4E1" font-size="36" font-family="Manrope, sans-serif" letter-spacing="8">SURFACE TRANSPORT CHEMICALS</text>
+  <defs>
+    <linearGradient id="paint0_linear_130_5" x1="144" y1="112" x2="1466" y2="988" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#506A65"/>
+      <stop offset="1" stop-color="#22313A"/>
+    </linearGradient>
+  </defs>
+</svg>
