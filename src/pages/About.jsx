@@ -124,7 +124,7 @@ export default function About() {
                 <span>应用领域</span>
                 <ul className="meta-list">
                   {applicationFields.map((item) => (
-                    <li key={item}>{item}</li>
+                    <li key={item.index}>{item.title}</li>
                   ))}
                 </ul>
               </div>
