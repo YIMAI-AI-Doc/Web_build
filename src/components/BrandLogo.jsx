@@ -4,16 +4,10 @@ import { brand } from "../content/siteContent";
 export default function BrandLogo({ compact = false, inverse = false }) {
   return (
     <div className={`brand${compact ? " brand-compact" : ""}${inverse ? " brand-inverse" : ""}`}>
-      <img className="brand-mark" src={logo} alt={`${brand.shortName} logo`} />
+      <img className="brand-mark" src={logo} alt={`${brand.shortName} 标识`} />
       <div className="brand-copy">
         <strong className="brand-cn">{brand.shortName}</strong>
-        <span className="brand-en" aria-label={brand.englishName}>
-          <b className="brand-en-word">YIMAI</b>
-          <i className="brand-en-gap" aria-hidden="true" />
-          <b className="brand-en-word">NEW</b>
-          <i className="brand-en-gap" aria-hidden="true" />
-          <b className="brand-en-word">MATERIALS</b>
-        </span>
+        <span className="brand-en" aria-label={brand.tagline}>{brand.tagline}</span>
       </div>
     </div>
   );

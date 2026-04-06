@@ -42,13 +42,11 @@ export default function Home() {
               <span>{brand.tagline}</span>
             </div>
             <h1>
-              面向油气开
+              面向油气开发关键工艺
               <br />
-              发关键工艺
+              的化学品与应用支持
               <br />
-              的化学品与
-              <br />
-              应用支持体系
+              体系
             </h1>
             <p className="hero-lead">{companyIntro.heroLead}</p>
             <div className="hero-actions">
@@ -66,7 +64,7 @@ export default function Home() {
               <img className="hero-photo" src={drillingImage} alt="工业场景展示" />
               <div className="hero-photo-wash" />
               <div className="hero-card">
-                <strong>Oilfield Chemistry</strong>
+                <strong>油田化学品</strong>
                 <p>研发、评价、应用与交付协同推进</p>
               </div>
               <div className="hero-rail">
@@ -83,7 +81,7 @@ export default function Home() {
         <div className="shell">
           <Reveal>
             <SectionHeading
-              eyebrow="Product Matrix"
+              eyebrow="产品矩阵"
               title={
                 <>
                   围绕油气开发流程
@@ -151,7 +149,7 @@ export default function Home() {
         <div className="shell split-layout">
           <Reveal>
             <SectionHeading
-              eyebrow="Application Support"
+              eyebrow="应用支持"
               title={applicationSupport.title}
               description={applicationSupport.description}
             />
@@ -173,7 +171,7 @@ export default function Home() {
         <div className="shell">
           <Reveal>
             <SectionHeading
-              eyebrow="Application Fields"
+              eyebrow="应用场景"
               title="主要服务场景"
               description="聚焦油气开发流程中对体系稳定性、配伍性和持续运行要求更高的关键环节。"
             />
@@ -195,7 +193,7 @@ export default function Home() {
         <div className="shell">
           <Reveal>
             <SectionHeading
-              eyebrow="Capability"
+              eyebrow="能力概览"
               title={
                 <>
                   让配方、质量和交付节奏
@@ -224,7 +222,7 @@ export default function Home() {
       <section className="section service-flow-section">
         <div className="shell service-flow-shell">
           <Reveal className="service-flow-copy">
-            <p className="eyebrow">Service Flow</p>
+            <p className="eyebrow">服务流程</p>
             <h2 className="service-flow-title">
               从需求沟通到持续
               <br />
@@ -275,7 +273,7 @@ export default function Home() {
         <div className="shell">
           <Reveal>
             <SectionHeading
-              eyebrow="Client Types"
+              eyebrow="合作客户"
               title="合作客户类型"
               description="保持克制表达，不虚构具体客户名称，但建立明确的业务对象范围。"
               align="center"
@@ -296,7 +294,7 @@ export default function Home() {
           <Reveal>
             <div className="cta-strip">
               <div>
-                <p className="eyebrow">Contact</p>
+                <p className="eyebrow">联系我们</p>
                 <h2>需要更适合工况的油田化学品方案？</h2>
                 <p>欢迎围绕应用场景、产品选型和合作方式与我们沟通。</p>
               </div>

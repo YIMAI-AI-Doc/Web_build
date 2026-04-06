@@ -45,7 +45,7 @@ export default function SiteFooter() {
       </div>
       <div className="footer-meta">
         <div className="shell shell-wide footer-meta-inner">
-          <p className="footer-meta-copy">© 2026 {brand.englishName}. All rights reserved.</p>
+          <p className="footer-meta-copy">© 2026 {brand.legalName} 版权所有。</p>
           <p className="footer-meta-record">
             {virtualContact.icp} / {virtualContact.police}
           </p>

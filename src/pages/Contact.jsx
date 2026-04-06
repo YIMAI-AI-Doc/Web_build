@@ -40,7 +40,7 @@ export default function Contact() {
       <section className="sub-hero">
         <div className="shell">
           <Reveal>
-            <p className="eyebrow">Contact</p>
+            <p className="eyebrow">联系我们</p>
             <h1 className="contact-hero-title">
               <span className="contact-hero-line">欢迎围绕产品、应用与</span>
               <span className="contact-hero-line">合作方式与我们联系</span>

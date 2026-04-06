@@ -20,7 +20,7 @@ export default function About() {
       <section className="sub-hero">
         <div className="shell">
           <Reveal>
-            <p className="eyebrow">About YIMAI</p>
+            <p className="eyebrow">关于羿麦</p>
             <h1 className="about-hero-title">
               以新材料与化学品能力
               <br />
@@ -35,14 +35,14 @@ export default function About() {
         <div className="shell about-grid">
           <Reveal>
             <SectionHeading
-              eyebrow="Positioning"
+              eyebrow="定位"
               title={companyIntro.positioningTitle}
               description={companyIntro.positioningText}
             />
           </Reveal>
           <Reveal delay={80}>
             <div className="about-panel">
-              <span>Business Focus</span>
+              <span>业务聚焦</span>
               <strong>{brand.tagline}</strong>
               <p>{companyIntro.panelText}</p>
             </div>
@@ -54,7 +54,7 @@ export default function About() {
         <div className="shell">
           <Reveal>
             <SectionHeading
-              eyebrow="Capability Structure"
+              eyebrow="能力结构"
               title="四项能力支撑长期合作"
               description="围绕研发、评价、应用和供应保障建立更完整的化学品服务能力。"
             />
@@ -76,17 +76,17 @@ export default function About() {
       </section>
 
       <section className="section">
-        <div className="shell about-grid">
+        <div className="shell">
           <Reveal>
             <SectionHeading
-              eyebrow="Application and Clients"
+              eyebrow="应用与客户"
               title="服务场景与合作对象更加明确"
               description="通过清晰的业务边界，让访客快速理解你们不是泛化工企业，而是面向特定工艺环节的专业材料供应与服务方。"
             />
           </Reveal>
-          <Reveal delay={80}>
-            <div className="about-meta">
-              <div>
+          <div className="about-meta">
+            <Reveal delay={80}>
+              <div className="about-meta-card">
                 <span>应用领域</span>
                 <ul className="meta-list">
                   {applicationFields.map((item) => (
@@ -94,7 +94,9 @@ export default function About() {
                   ))}
                 </ul>
               </div>
-              <div>
+            </Reveal>
+            <Reveal delay={160}>
+              <div className="about-meta-card">
                 <span>客户类型</span>
                 <ul className="meta-list">
                   {clientTypes.map((item) => (
@@ -102,7 +104,9 @@ export default function About() {
                   ))}
                 </ul>
               </div>
-              <div>
+            </Reveal>
+            <Reveal delay={240}>
+              <div className="about-meta-card">
                 <span>常见子类</span>
                 <ul className="meta-list">
                   {productSubcategories.map((item) => (
@@ -110,8 +114,8 @@ export default function About() {
                   ))}
                 </ul>
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </div>
       </section>
     </main>

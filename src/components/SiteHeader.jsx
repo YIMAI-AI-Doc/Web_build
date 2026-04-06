@@ -286,17 +286,9 @@ export default function SiteHeader() {
         <div className="site-search-panel">
           <div className="site-search-heading-row">
             <div className="site-search-heading-copy">
-              <span>Site Search</span>
+              <span>站内搜索</span>
               <h2 id="site-search-title">请输入关键词搜索相关内容</h2>
             </div>
-            <button
-              className="site-search-close"
-              type="button"
-              aria-label="关闭搜索框"
-              onClick={() => setSearchOpen(false)}
-            >
-              <CloseIcon />
-            </button>
           </div>
           <form className="site-search-form" onSubmit={handleSearchSubmit}>
             <label className="site-search-field">
@@ -325,7 +317,7 @@ export default function SiteHeader() {
         <div className="consult-panel">
           <div className="consult-head">
             <div className="consult-title-wrap">
-              <span>Business Contact</span>
+              <span>商务联系</span>
               <h2 id="consult-title">商务咨询联系方式</h2>
             </div>
             <button
